@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def profile_img(user)
     return image_tag(user.image, alt: user.name) if user.image?
 
@@ -10,5 +9,4 @@ module ApplicationHelper
     end
     image_tag(img_url, alt: user.name)
   end
-
 end
