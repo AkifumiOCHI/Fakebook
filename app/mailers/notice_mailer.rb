@@ -9,6 +9,6 @@ class NoticeMailer < ApplicationMailer
     @topic = topic
 
     mail to: "akifumi.ochi@gmail.com"
-        subject: '【FakeBook】トピックが投稿されました！'
+        subject:'【FakeBook】トピックが投稿されました！'
   end
 end
