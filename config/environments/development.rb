@@ -36,6 +36,12 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  #開発環境下でletter_openerを使用する
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener_web
+
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"  
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

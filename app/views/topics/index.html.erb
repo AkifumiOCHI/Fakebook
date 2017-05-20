@@ -16,6 +16,7 @@
       <tr>
         <td><p><%= topic.title %></p></td>
         <td><p><%= topic.content %></p></td>
+        <td><p><%= profile_img(topic).user) %></p></td>
       </tr>
       <tr>
         <td><%= link_to '詳細', topic, class: "btn btn-info btn-lg" %></td>
