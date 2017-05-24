@@ -4,7 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   mount_uploader :image, ImageUploader #deviseの設定配下に追記
-  has_many :topics
+  has_many :topics, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :relationships, foreing_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreing_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)
@@ -53,5 +58,17 @@ class User < ActiveRecord::Base
       params.delete :current_password
       update_without_password(params, *options)
     end
+  end
+
+  def follow!(other_user) #指定のユーザをフォローする
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def following?(other_user) #フォローしているかどうかを確認する
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user) #指定のユーザのフォローを解除する
+    relationships.find_by(followed_id: other_user.id).destroy
   end
 end

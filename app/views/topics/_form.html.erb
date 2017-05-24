@@ -18,10 +18,14 @@
   <%= f.text_field :content %>
   <br>
   <br>
-
+  <%= image_tag @topic.image.url if @topic.picture? %>
+  <%= f.file_field :picture %>
+  <%= f.hidden_field :picture_cache %>
+  <br>
+  <br>
 
 
   <div class="actions">
-    <%= f.submit class: "btn btn-default btn-lg" %>
+    <%= f.submit '投稿' class: "btn btn-default btn-lg" %>
   </div>
 <% end %>

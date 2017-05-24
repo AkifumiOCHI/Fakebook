@@ -7,14 +7,14 @@ class ApplicationController < ActionController::Base
   # nameカラムが新規登録とアカウント更新の際に、パラメータに含まれるようにします。
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  #変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入 -> carrierwaveを入れた時にimage,image_cacheを追加する
-  PERMISSIBLE_ATTRIBUTES = %i(name image image_cache)
+  #変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入 -> carrierwaveを入れた時にavatar,avatar_cacheを追加する
+  PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
   protected
 
   #deviseのストロングパラメーターにカラム追加するメソッドを定義
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: PERMISSIBLE_ATTRIBUTES)
-    devise_parameter_sanitizer.permit(:account_update, keys: PERMISSIBLE_ATTRIBUTES)
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: PERMISSIBLE_ATTRIBUTES)
+      devise_parameter_sanitizer.permit(:account_update, keys: PERMISSIBLE_ATTRIBUTES)
+    end
 end

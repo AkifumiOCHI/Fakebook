@@ -2,30 +2,36 @@
   <div class="wrapper col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
 <h1>トピック一覧</h1>
-<%= link_to '新規作成', new_topic_path, class: "btn btn-default btn-lg" %>
 <p id="notice"><%= notice %></p>
-<% @topics.each do |topic| %>
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td><p><%= topic.title %></p></td>
-        <td><p><%= topic.content %></p></td>
-        <td><p><%= profile_img(topic.user) %></p></td>
-      </tr>
-      <tr>
-        <td><%= link_to '詳細', topic, class: "btn btn-info btn-lg" %></td>
-        <td><%= link_to '編集', edit_topic_path(topic.id), class: "btn btn-warning btn-lg" %></td>
-        <td><%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: "btn btn-danger btn-lg" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to '新規作成', new_topic_path, class: "btn btn-default btn-lg" %>
 
+<% @topics.each do |topic| %>
+<div class="row">
+  <table>
+    <tr>
+      <td><%= profile_img(topic.user) %>　</td>
+      <td><h5><%= topic.user.name %></h5></td>
+   </tr>
+  </table>
+ <table>
+   <tr>
+     <td>
+     <% if topic.picture? %>
+　　　　　　 <%= image_tag(topic.picture) %>
+　　　　　　  <% end %>
+     </td>
+   </tr>
+   <tr>
+     <td><h6><%= topic.title %></h6></td>
+   </tr>
+   <tr>
+     <td><h6><%= topic.content %></h6></td>
+   </tr>
+ </table>
+ <br>
+ <br>
+   <%= link_to '編集', edit_topic_path(topic.id), class: 'btn btn-warning btn-sm'%>
+   <%= link_to '削除', topic_path(topic.id), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+</div>
 </div>
 </div>
