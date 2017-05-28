@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'relationships/create'
-
-  get 'relationships/destroy'
+  get 'notifications/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -10,6 +8,30 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  resources :topics do
+    resources :comments
+    post :confirm, on: :collection
+  end
+
+  resources :contacts, only: [:new, :create] do
+    collection do
+      post :confirm
+    end
+  end
+
+  if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  resources :users, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
+
+  resources :conversations do
+    resources :messages
+  end
+
+  root 'top#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -64,24 +86,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  resources :topics do
-    resources :comments
-    post :confirm, on: :collection
-  end
-
-  resources :contacts, only: [:new, :create] do
-    collection do
-      post :confirm
-    end
-  end
-
-  if Rails.env.development?
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
-
-  resources :users, only: [:index]
-  resources :relationships, only: [:create, :destroy]
-
-  root 'top#index'
 end

@@ -23,7 +23,7 @@
 
   <div class="field">
     <i>(変更したくない場合は空白のままにしてください)</i><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード" %>
     <% if @minimum_password_length %>
       <br />
       <em>最低 <%= @minimum_password_length %> 文字</em>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワード（確認）" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード（確認）" %>
   </div>
 
   <div class="field">
@@ -40,11 +40,11 @@
   </div>
 
   <% end %>
-
+  <h3>プロフィール画像</h3>
   <div class="field">
     <%= profile_img(@user) if profile_img(@user) %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
 　</div>
 
 

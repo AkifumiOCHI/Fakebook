@@ -15,23 +15,24 @@
   </table>
  <table>
    <tr>
-     <td>
-     <% if topic.picture? %>
-　　　　　　 <%= image_tag(topic.picture) %>
-　　　　　　  <% end %>
-     </td>
-   </tr>
-   <tr>
-     <td><h6><%= topic.title %></h6></td>
+     <td><%= link_to topic_path(topic) do %><h6><%= topic.title %><% end %></h6></td>
    </tr>
    <tr>
      <td><h6><%= topic.content %></h6></td>
    </tr>
+   <tr>
+     <td>
+     <% if topic.picture? %>
+　　　<%= image_tag(topic.picture) %>
+　　　<% end %>
+     </td>
+   </tr>
  </table>
  <br>
  <br>
-   <%= link_to '編集', edit_topic_path(topic.id), class: 'btn btn-warning btn-sm'%>
-   <%= link_to '削除', topic_path(topic.id), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+   <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-warning btn-sm' %>
+   <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-sm btn-danger' %>
+   <% end %>
 </div>
 </div>
 </div>

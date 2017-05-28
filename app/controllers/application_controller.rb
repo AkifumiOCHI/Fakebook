@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
   # nameカラムが新規登録とアカウント更新の際に、パラメータに含まれるようにします。
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # ヘッダへの通知機能の追加
+  before_action :current_notifications, if: :signed_in?
+
+  def current_notifications
+    @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
+  end
+
+
   #変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入 -> carrierwaveを入れた時にavatar,avatar_cacheを追加する
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 

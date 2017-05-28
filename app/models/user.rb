@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
-  mount_uploader :image, ImageUploader #deviseの設定配下に追記
+  mount_uploader :avatar, AvatarUploader #deviseの設定配下に追記
   has_many :topics, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :relationships, foreing_key: "follower_id", dependent: :destroy
-  has_many :reverse_relationships, foreing_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
