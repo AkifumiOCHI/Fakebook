@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  paginates_per 10
+
+  scope :index_all, -> {
+  select(:id, :email, :created_at, :name, :provider) #フィールドごとにレコードを取得
+  .order(created_at: :desc) #created_atカラムの降順に並び替え
+  }
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)
 

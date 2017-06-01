@@ -3,6 +3,8 @@
 
 <h1>トピック一覧</h1>
 <p id="notice"><%= notice %></p>
+<%= paginate @topics %>
+<br>
 <%= link_to '新規作成', new_topic_path, class: "btn btn-default btn-lg" %>
 
 <div class="row">
@@ -32,6 +34,8 @@
    <% end %>
  <br>
  <br>
+
 </div>
+ <%= paginate @topics %>
 </div>
 </div>

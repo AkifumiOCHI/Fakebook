@@ -1,9 +1,27 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper  {
+    margin-bottom: 60px;
+    padding: 20px;
+    .row {
+        border: none;
+        padding: 20px;
+        text-align: left;
+        word-wrap: break-word;
+    }
+}
+
+.container  {
+    padding-top: 0px;
+    background-color: white;
+}
 
 .container-child  {
   top: 30px;
+  padding-top: 0px;
+  padding-bottom: 58px;
+  background-color: white;
 }
 
 .usersindex  {

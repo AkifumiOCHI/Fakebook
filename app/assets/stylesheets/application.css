@@ -24,3 +24,17 @@
    min-height: 100%;
    background-color: white;
  }
+
+ footer {
+   width: 100%;
+   background-color: #3b5998;
+   border-top: 1px solid #29487d;
+   padding: 20px 0 10px 0;
+   color: white;
+   margin: auto;
+   font-size: 12px;
+   left: 0px;
+   bottom: 0px; /* bottom 0px を入れ、position: absolute;を入れてもフッタが下に表示されるようにした */
+   position: absolute;
+
+ }
