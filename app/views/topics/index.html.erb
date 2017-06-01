@@ -7,32 +7,26 @@
 
 <% @topics.each do |topic| %>
 <div class="row">
-  <table>
+  <table class="topic">
     <tr>
-      <td><%= profile_img(topic.user) %>　</td>
-      <td><h5><%= topic.user.name %></h5></td>
-   </tr>
-  </table>
- <table>
-   <tr>
-     <td><%= link_to topic_path(topic) do %><h6><%= topic.title %><% end %></h6></td>
-   </tr>
-   <tr>
-     <td><h6><%= topic.content %></h6></td>
-   </tr>
-   <tr>
+      <td><%= profile_img(topic.user) %>　<strong><%= topic.user.name %></strong>　　　<%= link_to topic_path(topic) do %><strong><%= topic.title %><% end %></td>
+    </tr>
+    <tr>
+     <td><%= topic.content %></strong></td>
+    </tr>
+    <tr>
      <td>
      <% if topic.picture? %>
 　　　<%= image_tag(topic.picture) %>
 　　　<% end %>
      </td>
-   </tr>
+    </tr>
  </table>
- <br>
  <br>
    <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-warning btn-sm' %>
    <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-sm btn-danger' %>
    <% end %>
+ <br>
 </div>
 </div>
 </div>

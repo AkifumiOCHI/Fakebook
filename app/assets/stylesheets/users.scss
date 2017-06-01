@@ -1,3 +1,51 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-child  {
+  top: 30px;
+}
+
+.usersindex  {
+  border: 1px solid #cccccc;
+  margin: 0 auto;
+}
+
+th {
+  border-bottom: 1px solid #cccccc;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.username  {
+  padding-right: 150px;
+  text-align: left;
+}
+
+.user_detail {
+  border: 1px solid #cccccc;
+  width: 100%;
+}
+
+.user_detail td {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+}
+
+.user_detail_title {
+  text-align: left;
+}
+
+.followers {
+  border: 1px solid #cccccc;
+}
+
+.row {
+    border: none;
+    padding: 20px;
+    text-align: left;
+    word-wrap: break-word;
+}

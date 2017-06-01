@@ -2,7 +2,7 @@
   <% comments.each do |comment| %>
     <% unless comment.id.nil? %>
       <li>
-        <p class="left"><%= comment.user.name %>さんがコメントしました。</p>
+        <p class="left"><%= comment.user.name %>さんがコメントしました。<%= profile_img(comment.user) %></p>
         <p class="left"><%= comment.content %></p>
         <% if current_user.id == comment.user.id %>
           <p class="right">

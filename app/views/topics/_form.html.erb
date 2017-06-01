@@ -10,22 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-  <%= f.label :タイトル %>
-  <%= f.text_field :title %>
+  <div style="text-align:left;">
+  <%= f.label :タイトル %>　
+  <%= f.text_field :title, class: "form-control" %>
+  </div>
   <br>
-  <%= f.label :内容 %>
-  <%= f.text_field :content %>
+  <div style="text-align:left;">
+  <%= f.label :内容 %>　
+  <%= f.text_field :content, class: "form-control"  %>
+  </div>
   <br>
   <br>
-  <%= image_tag @topic.image.url if @topic.picture? %>
+  <%= image_tag @topic.picture.url if @topic.picture? %>
   <%= f.file_field :picture %>
   <%= f.hidden_field :picture_cache %>
   <br>
-  <br>
 
-
-  <div class="actions">
-    <%= f.submit '投稿', class: "btn btn-default btn-lg" %>
+  <div class="actions", style="text-align:left">
+    <%= f.submit '投稿する', class: "btn btn-primary" %>
   </div>
 <% end %>

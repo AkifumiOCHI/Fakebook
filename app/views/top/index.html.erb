@@ -1,8 +1,40 @@
 <section class="main">
   <p class="flash"><%= notice %><%= alert %></p>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+
   <h1>トップページについて</h1>
   <p>
-     大課題3では、今までと違ってトップページには必ず何らかのコンテンツを入れます。<br>
-     内野さんのようにDeviseを入れるもよし、ログインせずともトピックだけは見られるようにするもよし、とにかく無意味な画像を載せたような屑トップページにはしない。
+     新規アカウントを作成、もしくは有名人、バンド、ビジネスのためにFacebookページを作成してください。<br>
+     情報の共有範囲は設定で管理できて安心です。
   </p>
+   </div>
+   <div class="col-md-6 col-sm-12">
+     <h2>ログイン</h2>
+
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+       <div class="field">
+         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
+       </div>
+
+       <div class="field">
+         <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+       </div>
+
+       <% if devise_mapping.rememberable? -%>
+         <div class="field">
+           <%= f.check_box :remember_me %>
+           <%= f.label :内容を記憶させる %>
+         </div>
+       <% end -%>
+
+       <div class="actions">
+         <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+       </div>
+     <% end %>
+
+     <%= render "devise/shared/links" %>
+   </div>
+ </div>
+
 </section>

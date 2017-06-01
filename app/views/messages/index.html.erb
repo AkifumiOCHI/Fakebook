@@ -11,7 +11,7 @@
       <% user = User.find(message.user_id) %>
       <div class="item">
         <div class="content">
-          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+          <div class="header"><strong><%= user.name %></strong>　投稿日時：<%= message.message_time %></div>
           <div class="list">
             <div class="item">
               <i class="right triangle icon"></i>
@@ -29,8 +29,9 @@
     <%= f.text_area :body, class: "form-control" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "メッセージを送る" %>
+    <br>
+  <div style="text-align:left;">
+    <%= f.submit "メッセージを送る", class: "btn btn-primary" %>
   </div>
 
 <% end %>

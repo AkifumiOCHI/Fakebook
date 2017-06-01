@@ -1,17 +1,22 @@
 <div class="container">
-  <h2>ユーザー</h2>
-  <% @users.each do |user| %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <% if user.id != current_user.id %>
-        <li style="list-style-type:none;">
-          <div class="item">
-           <%= link_to user_path(user) do %><%= profile_img(user) %><% end %>
-           <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-         </div>
-           <%= user.email %>
-           <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
-        </li>
+    <div class="container-child col-md-10 col-sm-12">
+        <table class="usersindex">
+          <tr>
+            <th>ユーザー一覧</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @users.each do |user| %>
+          <% if user.id != current_user.id %>
+          <tr>
+            <td class="userimg", style="max-width: 40px; max-height: 40px;"><%= profile_img(user) %></td>
+            <td class="username"><%= link_to user_path(user) do %><%= user.name %> (<%= user.email %>)<% end %></td>
+            <td class="message"><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: 'btn btn-primary btn-sm' %></td>
+            <td class="follow"><%= render partial: 'follow_form', locals: { user: user } if signed_in? %></td>
+          </tr>
         <% end %>
-         </div>
-  <% end %>
+        <% end %>
+        </table>
+      </div>
 </div>

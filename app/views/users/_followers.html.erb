@@ -1,9 +1,13 @@
 <div class="container">
-  <% @user.followers.each do |follower| %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <%= profile_img(follower) %>
-        <%= follower.name %>
-        <%= render 'follow_form', user: follower %>
+      <div class="container-child col-md-4 col-sm-6 col-xs-8 ">
+        <table class="followers">
+        <% @user.followers.each do |follower| %>
+          <tr>
+            <td><%= profile_img(follower) %></td>
+            <td><%= follower.name %></td>
+            <td><%= render 'follow_form', user: follower %></td>
+          </tr>
+          <% end %>
+        </table>
       </div>
-  <% end %>
 </div>

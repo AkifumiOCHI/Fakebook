@@ -6,7 +6,7 @@
     margin-bottom: 60px;
     padding: 20px;
     .row {
-        border-bottom: 1px solid #ccc;
+        border: none;
         padding: 20px;
         text-align: left;
         word-wrap: break-word;
@@ -19,6 +19,7 @@ input[type="submit"].btn-block {
 
 .container  {
     padding-top: 0px;
+    background-color: white;
 }
 
 .blog-top-btn {
@@ -44,13 +45,20 @@ input[type="submit"].btn-block {
     }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-  background-color: #e9ebee;
-}
+
 
 table {
   margin: 0 auto;
   padding: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.topic {
+  border: 1px solid #666666;
+  border-radius: 10px;
+}
+
+.topic tr {
+  border: none;
 }

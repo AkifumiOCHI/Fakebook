@@ -9,4 +9,5 @@ module ApplicationHelper
     end
     image_tag(img_url, alt: user.name)
   end
+
 end
