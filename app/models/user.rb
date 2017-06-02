@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   paginates_per 10
 
   scope :index_all, -> {
-  select(:id, :email, :created_at, :name, :provider) #フィールドごとにレコードを取得
+  select(:id, :email, :created_at, :name, :provider, :image_url, :avatar) #フィールドごとにレコードを取得
   .order(created_at: :desc) #created_atカラムの降順に並び替え
   }
 
