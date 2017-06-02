@@ -1,7 +1,7 @@
 <%= form_for(@topic) do |f| %>
-  <% if @topic.errors.any? %>
+  <!--<% if @topic.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+      <h2><%= pluralize(@topic.errors.count, "error") %> 件のエラーがあります。</h2>
 
       <ul>
       <% @topic.errors.full_messages.each do |message| %>
@@ -9,7 +9,8 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %>-->
+<%= f.error_messages! %>
   <div style="text-align:left;">
   <%= f.label :タイトル %>　
   <%= f.text_field :title, class: "form-control" %>

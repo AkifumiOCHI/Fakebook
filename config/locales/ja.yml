@@ -145,6 +145,12 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    label:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        remember_me: パスワードを記憶
   number:
     currency:
       format:
