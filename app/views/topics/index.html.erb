@@ -17,11 +17,7 @@
      <td><%= topic.content %></strong></td>
     </tr>
     <tr>
-     <td>
-     <% if topic.picture? %>
-　　　<%= image_tag(topic.picture) %>
-　　　<% end %>
-     </td>
+     <td><% if topic.picture? %><%= image_tag(topic.picture) %><% end %></td>
     </tr>
   </table>
     <br>
