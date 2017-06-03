@@ -26,7 +26,6 @@
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
 <p id="notice"><%= notice %></p>
-<%= f.error_messages! %>
   <div class="field">
     <%= f.text_area :body, class: "form-control" %>
   </div>
